@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda en Línea – Proyecto U1</title>
+  <meta name="description" content="Proyecto académico: tienda en línea con secciones Nuestra Tienda, Servicios, Contáctenos y Solicitud de Cotización." />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg-soft:#111827;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --brand:#22d3ee;
+      --brand-2:#a78bfa;
+      --ok:#34d399;
+      --err:#f87171;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; color:var(--text); background:linear-gradient(180deg, var(--bg), #0a0f1b 50%, var(--bg));}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    header.hero{position:relative; isolation:isolate; min-height:68vh; display:grid; place-items:center; text-align:center;}
+    header.hero::before{content:""; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1519336555923-59661f41bb29?q=80&w=1880&auto=format&fit=crop') center/cover no-repeat; filter:brightness(.45) saturate(1.1); z-index:-2}
+    header.hero::after{content:""; position:absolute; inset:0; background:radial-gradient(80% 60% at 50% 40%, rgba(34,211,238,.15), transparent 60%), linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.6)); z-index:-1}
+    .hero-inner{width:min(95%, var(--maxw)); padding:90px 0 40px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.4px}
+    .logo img{width:44px; height:44px; border-radius:50%; box-shadow:var(--shadow)}
+    nav{display:flex; gap:12px; flex-wrap:wrap}
+    .nav-link{padding:10px 14px; border:1px solid rgba(255,255,255,.15); border-radius:999px; color:#e6fbff; backdrop-filter: blur(6px); background:rgba(255,255,255,.06); transition:.25s ease; font-size:.95rem}
+    .nav-link:hover,.nav-link[aria-current="page"]{background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b1220; border-color:transparent}
+    .hero-copy{margin-top:80px}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#d1fae5; font-size:.82rem}
+    .hero h1{font-size: clamp(1.9rem, 3vw + .8rem, 3.2rem); margin:18px 0 10px}
+    .hero p{max-width:780px; margin-inline:auto; color:#dbeafe}
+    .btn{padding:12px 18px; border-radius:999px; border:0; background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b1220; font-weight:700; cursor:pointer; box-shadow: var(--shadow);}
+    section{padding:70px 0}
+    .wrap{width:min(94%, var(--maxw)); margin-inline:auto}
+    .title{font-size:clamp(1.4rem, 2vw + .6rem, 2.2rem); margin:0 0 10px}
+    .lead{color:var(--muted); margin:0 0 26px}
+    .about{display:grid; grid-template-columns: 1fr; gap:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); padding:22px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow)}
+    .member{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-sm); padding:14px; text-align:center}
+    .avatar{border-radius:12px; aspect-ratio:1/1; object-fit:cover; margin-bottom:10px}
+    /* === Overrides: fondo blanco === */
+  body{background:#ffffff; color:#111827}
+  .card,.member,.contact-card{background:#ffffff; border:1px solid rgba(0,0,0,.08)}
+  .lead{color:#374151}
+  footer{border-top:1px solid rgba(0,0,0,.08); color:#374151}
+</style>
+</head>
+<body>
+  <header class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="topbar" aria-label="Barra superior">
+        <a href="#inicio" class="logo" aria-label="Inicio">
+          <img alt="Logo de la tienda" src="https://api.iconify.design/ph/storefront-duotone.svg?color=%23ffffff" />
+          <span>NeoShop · Tienda en Línea</span>
+        </a>
+        <nav aria-label="Navegación principal">
+          <a class="nav-link" href="#tienda">Nuestra Tienda</a>
+          <a class="nav-link" href="#servicios">Servicios</a>
+          <a class="nav-link" href="#contacto">Contáctenos</a>
+          <a class="nav-link" href="#cotizacion">Solicitud de Cotización</a>
+        </nav>
+      </div>
+      <div class="hero-copy">
+        <span class="eyebrow">Proyecto académico · U1 (tema1, tema2)</span>
+        <h1>Todo lo que necesitas, en un solo lugar.</h1>
+        <p>Esta es una plantilla base para su tienda en línea. Incluye encabezado con banner, navegación por secciones, presentación del equipo, servicios, contacto con mapa y un formulario de cotización.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nuestra Tienda On-line -->
+  <section id="tienda">
+    <div class="wrap about">
+      <div class="card">
+        <h2 class="title">Nuestra Tienda On-line</h2>
+        <p class="lead">Somos un equipo apasionado por la tecnología y la experiencia de compra simple.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Integrante</h3>
+        <article class="member">
+          <img class="avatar" src="img/FOTO1.png" alt="Foto de Juan Camilo Gomez Ramirez" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop';" />
+          <h4>Juan Camilo Gomez Ramirez</h4>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="wrap">
+      <h2 class="title">Servicios</h2>
+      <p class="lead">La tienda debe ofrecer al menos dos servicios.</p>
+      <div class="card">
+        <h3>Asesoría de Compra</h3>
+        <p>Te guiamos para elegir el producto ideal según tu necesidad y presupuesto.</p>
+      </div>
+      <div class="card">
+        <h3>Envío Rápido</h3>
+        <p>Logística nacional con guía y seguimiento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contáctenos -->
+  <section id="contacto">
+    <div class="wrap">
+      <h2 class="title">Contáctenos</h2>
+      <ul>
+        <li>WhatsApp: +57 320 264 21 33</li>
+        <li>Celular: +57 320 264 21 33</li>
+        <li>Dirección: Calle 30 #40-10 Itagui Zona Industrial</li>
+        <li>Correo: jcamilo1802@gmail.com</li>
+      </ul>
+      <iframe class="map" title="Mapa Google" loading="lazy" allowfullscreen
+          src="https://www.google.com/maps?q=Calle%2030%20%2340-10%20Itagui%20Zona%20Industrial&output=embed"></iframe>
+    </div>
+  </section>
+
+  <!-- Solicitud de Cotización -->
+  <section id="cotizacion">
+    <div class="wrap">
+      <h2 class="title">Solicitud de Cotización</h2>
+      <form>
+        <label>Nombre completo <input type="text" required /></label>
+        <label>Correo electrónico <input type="email" required /></label>
+        <label>Teléfono / WhatsApp <input type="tel" required /></label>
+        <label>Categoría de producto <select required><option>Seleccione…</option><option>Tecnología</option></select></label>
+        <label>Cantidad <input type="number" min="1" required /></label>
+        <label>Detalle de la solicitud <textarea required></textarea></label>
+        <button class="btn" type="submit">Enviar solicitud</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <small>© <span id="y"></span> · Desarrollado por <strong>Juan Camilo Gomez Ramirez</strong><br>
+      Actividad Nro. 2 – HTML<br>
+      Materia: <strong>LENGUAJES DE PROGRAMACIÓN PARA LA WEB</strong></small>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
