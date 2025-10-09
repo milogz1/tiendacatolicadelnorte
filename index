@@ -51,7 +51,7 @@
     
     /* === Estilos para la sección de video === */
     .video-section {
-      background: var(--bg-soft);
+      background: var(--bg-soft); /* Ajustado para que tome el color de fondo soft */
       text-align: center;
     }
     .video-container {
@@ -78,11 +78,11 @@
     
     /* === Overrides: fondo blanco === */
     body{background:#ffffff; color:#111827}
-    .card,.member,.contact-card{background:#ffffff; border:1px solid rgba(0,0,0,.08)}
+    .card,.member,.contact-card,.video-section{background:#ffffff; border:1px solid rgba(0,0,0,.08)} /* Añadido .video-section aquí */
     .lead{color:#374151}
     footer{border-top:1px solid rgba(0,0,0,.08); color:#374151}
     
-    /* Ajustes para el formulario */
+    /* Ajustes para los formularios */
     form {
       display: grid;
       gap: 16px;
@@ -90,6 +90,7 @@
     }
     label {
       display: block;
+      font-weight: 500;
     }
     input, select, textarea {
       width: 100%;
@@ -97,6 +98,8 @@
       border: 1px solid rgba(0,0,0,.2);
       border-radius: 8px;
       margin-top: 5px;
+      font-family: inherit;
+      font-size: 1rem;
     }
     textarea {
       min-height: 100px;
@@ -110,6 +113,24 @@
       border: none;
       border-radius: var(--radius-sm);
       margin-top: 20px;
+    }
+    
+    /* === Estilos para el resultado del cuento === */
+    .cuento-resultado {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border: 1px solid rgba(0,0,0,.1);
+      border-radius: var(--radius-sm);
+    }
+    .cuento-resultado h3 {
+      margin-top: 0;
+      color: #000;
+    }
+    .cuento-texto {
+      white-space: pre-wrap; /* Mantiene los saltos de línea del texto */
+      line-height: 1.6;
+      color: #343a40;
     }
   </style>
 </head>
@@ -125,7 +146,7 @@
           <a class="nav-link" href="#tienda">Nuestra Tienda</a>
           <a class="nav-link" href="#servicios">Servicios</a>
           <a class="nav-link" href="#video">Video</a>
-          <a class="nav-link" href="#contacto">Contáctenos</a>
+          <a class="nav-link" href="#crea-cuento">Crea tu Cuento</a> <a class="nav-link" href="#contacto">Contáctenos</a>
           <a class="nav-link" href="#cotizacion">Solicitud de Cotización</a>
         </nav>
       </div>
@@ -137,7 +158,6 @@
     </div>
   </header>
 
-  <!-- Sección de Video -->
   <section class="video-section" id="video">
     <div class="wrap video-container">
       <h2 class="title">Video de Presentación</h2>
@@ -145,7 +165,7 @@
       <div class="video-wrapper">
         <iframe 
           src="https://www.youtube.com/embed/ErudMGW7LG0" 
-          title="Video de presentación de NeoShop" 
+          title="Video de presentación de NeoShop"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
         </iframe>
@@ -153,7 +173,6 @@
     </div>
   </section>
 
-  <!-- Nuestra Tienda On-line -->
   <section id="tienda">
     <div class="wrap about">
       <div class="card">
@@ -170,7 +189,6 @@
     </div>
   </section>
 
-  <!-- Servicios -->
   <section id="servicios">
     <div class="wrap">
       <h2 class="title">Servicios</h2>
@@ -186,7 +204,27 @@
     </div>
   </section>
 
-  <!-- Contáctenos -->
+  <section id="crea-cuento">
+    <div class="wrap">
+      <h2 class="title">Crea tu Propio Cuento</h2>
+      <p class="lead">Completa tus datos y presiona "Continuar" para generar una historia única contigo como protagonista.</p>
+      
+      <form id="cuento-form">
+        <label>Nombres y apellidos <input type="text" id="nombre" required /></label>
+        <label>Apodo <input type="text" id="apodo" required /></label>
+        <label>Color de Cabello <input type="text" id="cabello" required /></label>
+        <label>Color de Ojos <input type="text" id="ojos" required /></label>
+        <label>Edad <input type="number" id="edad" min="1" required /></label>
+        <label>Hobby (Solo uno) <input type="text" id="hobby" required /></label>
+        <button class="btn" type="submit">Continuar</button>
+      </form>
+      
+      <div id="resultado-cuento" class="cuento-resultado" style="display: none;">
+        <h3>¡Aquí está tu cuento!</h3>
+        <p id="historia-generada" class="cuento-texto"></p>
+      </div>
+    </div>
+  </section>
   <section id="contacto">
     <div class="wrap">
       <h2 class="title">Contáctenos</h2>
@@ -201,7 +239,6 @@
     </div>
   </section>
 
-  <!-- Solicitud de Cotización -->
   <section id="cotizacion">
     <div class="wrap">
       <h2 class="title">Solicitud de Cotización</h2>
@@ -224,8 +261,50 @@
       Materia: <strong>LENGUAJES DE PROGRAMACIÓN PARA LA WEB</strong></small>
     </div>
   </footer>
+
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  
+  <script>
+    // Seleccionamos el formulario por su ID
+    const cuentoForm = document.getElementById('cuento-form');
+    
+    // Escuchamos el evento 'submit' del formulario
+    cuentoForm.addEventListener('submit', function(event) {
+      // Prevenimos el comportamiento por defecto del formulario (que es recargar la página)
+      event.preventDefault();
+      
+      // Capturamos los valores de cada campo del formulario
+      const nombre = document.getElementById('nombre').value;
+      const apodo = document.getElementById('apodo').value;
+      const cabello = document.getElementById('cabello').value;
+      const ojos = document.getElementById('ojos').value;
+      const edad = document.getElementById('edad').value;
+      const hobby = document.getElementById('hobby').value;
+      
+      // Construimos la historia usando los datos del usuario
+      const historia = `En el corazón de un bosque encantado, vivía una persona de ${edad} años llamada ${nombre}, aunque todos en el reino le conocían por su apodo: "${apodo}".
+      
+Su cabello, de un asombroso color ${cabello}, parecía capturar la luz del sol, y sus ojos, de un profundo tono ${ojos}, reflejaban la sabiduría de los árboles ancestrales.
+      
+No había nadie en el reino que practicara su hobby, ${hobby}, con tanta pasión y destreza. Un día, el rey convocó a "${apodo}" al castillo, pues solo alguien con su talento único para ${hobby} podría resolver el gran acertijo que protegía el tesoro perdido del reino.
+      
+Y así, ${nombre} emprendió la mayor aventura de su vida, demostrando que un pasatiempo puede cambiar el destino de todos.`;
+      
+      // Seleccionamos los elementos donde mostraremos el resultado
+      const resultadoDiv = document.getElementById('resultado-cuento');
+      const historiaP = document.getElementById('historia-generada');
+      
+      // Asignamos el texto de la historia al párrafo correspondiente
+      historiaP.textContent = historia;
+      
+      // Hacemos visible el contenedor del resultado
+      resultadoDiv.style.display = 'block';
+
+      // Opcional: hacemos scroll para que el usuario vea el resultado
+      resultadoDiv.scrollIntoView({ behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
