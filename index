@@ -48,12 +48,70 @@
     .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); padding:22px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow)}
     .member{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-sm); padding:14px; text-align:center}
     .avatar{border-radius:12px; aspect-ratio:1/1; object-fit:cover; margin-bottom:10px}
+    
+    /* === Estilos para la sección de video === */
+    .video-section {
+      background: var(--bg-soft);
+      text-align: center;
+    }
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
     /* === Overrides: fondo blanco === */
-  body{background:#ffffff; color:#111827}
-  .card,.member,.contact-card{background:#ffffff; border:1px solid rgba(0,0,0,.08)}
-  .lead{color:#374151}
-  footer{border-top:1px solid rgba(0,0,0,.08); color:#374151}
-</style>
+    body{background:#ffffff; color:#111827}
+    .card,.member,.contact-card{background:#ffffff; border:1px solid rgba(0,0,0,.08)}
+    .lead{color:#374151}
+    footer{border-top:1px solid rgba(0,0,0,.08); color:#374151}
+    
+    /* Ajustes para el formulario */
+    form {
+      display: grid;
+      gap: 16px;
+      max-width: 600px;
+    }
+    label {
+      display: block;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid rgba(0,0,0,.2);
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    /* Ajustes para el mapa */
+    .map {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: var(--radius-sm);
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <header class="hero" id="inicio">
@@ -66,6 +124,7 @@
         <nav aria-label="Navegación principal">
           <a class="nav-link" href="#tienda">Nuestra Tienda</a>
           <a class="nav-link" href="#servicios">Servicios</a>
+          <a class="nav-link" href="#video">Video</a>
           <a class="nav-link" href="#contacto">Contáctenos</a>
           <a class="nav-link" href="#cotizacion">Solicitud de Cotización</a>
         </nav>
@@ -77,6 +136,22 @@
       </div>
     </div>
   </header>
+
+  <!-- Sección de Video -->
+  <section class="video-section" id="video">
+    <div class="wrap video-container">
+      <h2 class="title">Video de Presentación</h2>
+      <p class="lead">Conoce más sobre nuestros productos y servicios en este video informativo.</p>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/ErudMGW7LG0" 
+          title="Video de presentación de NeoShop" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
 
   <!-- Nuestra Tienda On-line -->
   <section id="tienda">
