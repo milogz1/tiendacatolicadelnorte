@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tienda en Línea – Proyecto U1</title>
-  <meta name="description" content="Proyecto académico: tienda en línea con secciones Nuestra Tienda, Servicios, Contáctenos y Solicitud de Cotización." />
+  <title>Soporte Remoto TI – Proyecto U1</title>
+  <meta name="description" content="Especialistas en soporte remoto para empresas y personas: formateo, instalación de software, aprovisionamiento de redes y centros de datos." />
   <style>
     :root{
       --bg:#0f172a;
@@ -26,7 +26,7 @@
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
     header.hero{position:relative; isolation:isolate; min-height:68vh; display:grid; place-items:center; text-align:center;}
-    header.hero::before{content:""; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1519336555923-59661f41bb29?q=80&w=1880&auto=format&fit=crop') center/cover no-repeat; filter:brightness(.45) saturate(1.1); z-index:-2}
+    header.hero::before{content:""; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop') center/cover no-repeat; filter:brightness(.45) saturate(1.1); z-index:-2}
     header.hero::after{content:""; position:absolute; inset:0; background:radial-gradient(80% 60% at 50% 40%, rgba(34,211,238,.15), transparent 60%), linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.6)); z-index:-1}
     .hero-inner{width:min(95%, var(--maxw)); padding:90px 0 40px}
     .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px;}
@@ -37,7 +37,7 @@
     .nav-link:hover,.nav-link[aria-current="page"]{background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b1220; border-color:transparent}
     .hero-copy{margin-top:80px}
     .eyebrow{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#d1fae5; font-size:.82rem}
-    .hero h1{font-size: clamp(1.9rem, 3vw + .8rem, 3.2rem); margin:18px 0 10px}
+    .hero h1{font-size: clamp(1.9rem, 3vw + .8rem, 3.2rem); margin:18px 0 10px; color:#ffffff !important}
     .hero p{max-width:780px; margin-inline:auto; color:#dbeafe}
     .btn{padding:12px 18px; border-radius:999px; border:0; background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b1220; font-weight:700; cursor:pointer; box-shadow: var(--shadow);}
     section{padding:70px 0}
@@ -140,20 +140,21 @@
       <div class="topbar" aria-label="Barra superior">
         <a href="#inicio" class="logo" aria-label="Inicio">
           <img alt="Logo de la tienda" src="https://api.iconify.design/ph/storefront-duotone.svg?color=%23ffffff" />
-          <span>NeoShop · Tienda en Línea</span>
+          <span>Soporte Remoto TI</span>
         </a>
         <nav aria-label="Navegación principal">
-          <a class="nav-link" href="#tienda">Nuestra Tienda</a>
+          <a class="nav-link" href="#tienda">Nuestra Empresa</a>
           <a class="nav-link" href="#servicios">Servicios</a>
           <a class="nav-link" href="#video">Video</a>
-          <a class="nav-link" href="#crea-cuento">Crea tu Cuento</a> <a class="nav-link" href="#contacto">Contáctenos</a>
           <a class="nav-link" href="#cotizacion">Solicitud de Cotización</a>
+          <a class="nav-link" href="#crea-cuento">Crea tu Cuento</a>
+          <a class="nav-link" href="#contacto">Contáctenos</a>
         </nav>
       </div>
       <div class="hero-copy">
         <span class="eyebrow">Proyecto académico · U1 (tema1, tema2)</span>
-        <h1>Todo lo que necesitas, en un solo lugar.</h1>
-        <p>Esta es una plantilla base para su tienda en línea. Incluye encabezado con banner, navegación por secciones, presentación del equipo, servicios, contacto con mapa y un formulario de cotización.</p>
+        <h1>Soporte Remoto Especializado para Empresas y Personas</h1>
+        <p>Soluciones tecnológicas integrales: desde formateo de equipos hasta aprovisionamiento de redes y centros de datos. Tu aliado en soporte TI remoto.</p>
       </div>
     </div>
   </header>
@@ -161,11 +162,11 @@
   <section class="video-section" id="video">
     <div class="wrap video-container">
       <h2 class="title">Video de Presentación</h2>
-      <p class="lead">Conoce más sobre nuestros productos y servicios en este video informativo.</p>
+      <p class="lead">Conoce más sobre nuestros servicios de soporte remoto en este video informativo.</p>
       <div class="video-wrapper">
         <iframe 
           src="https://www.youtube.com/embed/ErudMGW7LG0" 
-          title="Video de presentación de NeoShop"
+          title="Video de presentación de Soporte Remoto TI"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
         </iframe>
@@ -176,8 +177,8 @@
   <section id="tienda">
     <div class="wrap about">
       <div class="card">
-        <h2 class="title">Nuestra Tienda On-line</h2>
-        <p class="lead">Somos un equipo apasionado por la tecnología y la experiencia de compra simple.</p>
+        <h2 class="title">Nuestra Empresa</h2>
+        <p class="lead">Somos especialistas en soporte remoto para empresas y personas. Ofrecemos soluciones tecnológicas integrales que van desde el formateo básico de equipos hasta el aprovisionamiento avanzado de redes y centros de datos.</p>
       </div>
       <div class="card">
         <h3 style="margin-top:0">Integrante</h3>
@@ -191,16 +192,44 @@
 
   <section id="servicios">
     <div class="wrap">
-      <h2 class="title">Servicios</h2>
-      <p class="lead">La tienda debe ofrecer al menos dos servicios.</p>
+      <h2 class="title">Servicios de Soporte Remoto</h2>
+      <p class="lead">Ofrecemos una amplia gama de servicios de soporte tecnológico remoto para empresas y particulares.</p>
       <div class="card">
-        <h3>Asesoría de Compra</h3>
-        <p>Te guiamos para elegir el producto ideal según tu necesidad y presupuesto.</p>
+        <h3>Soporte Básico</h3>
+        <p>Formateo de equipos, instalación de sistemas operativos, eliminación de virus y optimización de rendimiento.</p>
       </div>
       <div class="card">
-        <h3>Envío Rápido</h3>
-        <p>Logística nacional con guía y seguimiento.</p>
+        <h3>Instalación de Software</h3>
+        <p>Instalación y configuración de aplicaciones empresariales, suites ofimáticas y software especializado.</p>
       </div>
+      <div class="card">
+        <h3>Gestión de Redes</h3>
+        <p>Configuración de routers, switches, firewalls y aprovisionamiento de redes empresariales.</p>
+      </div>
+      <div class="card">
+        <h3>Centros de Datos</h3>
+        <p>Administración remota de servidores, virtualización y aprovisionamiento de infraestructura de centros de datos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotizacion">
+    <div class="wrap">
+      <h2 class="title">Solicitud de Cotización</h2>
+      <form>
+        <label>Nombre completo <input type="text" required /></label>
+        <label>Correo electrónico <input type="email" required /></label>
+        <label>Teléfono / WhatsApp <input type="tel" required /></label>
+        <label>Tipo de servicio <select required>
+          <option>Seleccione…</option>
+          <option>Soporte Básico</option>
+          <option>Instalación de Software</option>
+          <option>Gestión de Redes</option>
+          <option>Centros de Datos</option>
+        </select></label>
+        <label>Detalle de la solicitud <textarea required></textarea></label>
+        <button class="btn" type="submit">Enviar solicitud</button>
+      </form>
     </div>
   </section>
 
@@ -225,6 +254,7 @@
       </div>
     </div>
   </section>
+
   <section id="contacto">
     <div class="wrap">
       <h2 class="title">Contáctenos</h2>
@@ -236,21 +266,6 @@
       </ul>
       <iframe class="map" title="Mapa Google" loading="lazy" allowfullscreen
           src="https://www.google.com/maps?q=Calle%2030%20%2340-10%20Itagui%20Zona%20Industrial&output=embed"></iframe>
-    </div>
-  </section>
-
-  <section id="cotizacion">
-    <div class="wrap">
-      <h2 class="title">Solicitud de Cotización</h2>
-      <form>
-        <label>Nombre completo <input type="text" required /></label>
-        <label>Correo electrónico <input type="email" required /></label>
-        <label>Teléfono / WhatsApp <input type="tel" required /></label>
-        <label>Categoría de producto <select required><option>Seleccione…</option><option>Tecnología</option></select></label>
-        <label>Cantidad <input type="number" min="1" required /></label>
-        <label>Detalle de la solicitud <textarea required></textarea></label>
-        <button class="btn" type="submit">Enviar solicitud</button>
-      </form>
     </div>
   </section>
 
