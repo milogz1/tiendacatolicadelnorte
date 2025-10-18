@@ -132,6 +132,39 @@
       line-height: 1.6;
       color: #343a40;
     }
+    
+    /* === Estilos para la sección de crear cuento con video === */
+    .cuento-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+    
+    .cuento-video {
+      position: relative;
+      padding-bottom: 75%; /* Relación de aspecto 4:3 para que sea más cuadrado */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .cuento-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* Responsive: en pantallas pequeñas, el video va debajo del formulario */
+    @media (max-width: 768px) {
+      .cuento-container {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -183,7 +216,7 @@
       <div class="card">
         <h3 style="margin-top:0">Integrante</h3>
         <article class="member">
-          <img class="avatar" src="./FOTO1.png" alt="Foto de Juan Camilo Gomez Ramirez" />
+          <img class="avatar" src="img/FOTO1.png" alt="Foto de Juan Camilo Gomez Ramirez" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop';" />
           <h4>Juan Camilo Gomez Ramirez</h4>
         </article>
       </div>
@@ -238,19 +271,32 @@
       <h2 class="title">Crea tu Propio Cuento</h2>
       <p class="lead">Completa tus datos y presiona "Continuar" para generar una historia única contigo como protagonista.</p>
       
-      <form id="cuento-form">
-        <label>Nombres y apellidos <input type="text" id="nombre" required /></label>
-        <label>Apodo <input type="text" id="apodo" required /></label>
-        <label>Color de Cabello <input type="text" id="cabello" required /></label>
-        <label>Color de Ojos <input type="text" id="ojos" required /></label>
-        <label>Edad <input type="number" id="edad" min="1" required /></label>
-        <label>Hobby (Solo uno) <input type="text" id="hobby" required /></label>
-        <button class="btn" type="submit">Continuar</button>
-      </form>
-      
-      <div id="resultado-cuento" class="cuento-resultado" style="display: none;">
-        <h3>¡Aquí está tu cuento!</h3>
-        <p id="historia-generada" class="cuento-texto"></p>
+      <div class="cuento-container">
+        <div>
+          <form id="cuento-form">
+            <label>Nombres y apellidos <input type="text" id="nombre" required /></label>
+            <label>Apodo <input type="text" id="apodo" required /></label>
+            <label>Color de Cabello <input type="text" id="cabello" required /></label>
+            <label>Color de Ojos <input type="text" id="ojos" required /></label>
+            <label>Edad <input type="number" id="edad" min="1" required /></label>
+            <label>Hobby (Solo uno) <input type="text" id="hobby" required /></label>
+            <button class="btn" type="submit">Continuar</button>
+          </form>
+          
+          <div id="resultado-cuento" class="cuento-resultado" style="display: none;">
+            <h3>¡Aquí está tu cuento!</h3>
+            <p id="historia-generada" class="cuento-texto"></p>
+          </div>
+        </div>
+        
+        <div class="cuento-video">
+          <iframe 
+            src="https://www.youtube.com/embed/aUxLR8-ofRw" 
+            title="Video inspirador para crear tu cuento"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
