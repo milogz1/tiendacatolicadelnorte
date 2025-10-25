@@ -5,205 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Soporte Remoto TI – Proyecto U1</title>
   <meta name="description" content="Especialistas en soporte remoto para empresas y personas: formateo, instalación de software, aprovisionamiento de redes y centros de datos." />
-  <style>
-    :root{
-      --bg:#0f172a;
-      --bg-soft:#111827;
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --text:#e5e7eb;
-      --brand:#22d3ee;
-      --brand-2:#a78bfa;
-      --ok:#34d399;
-      --err:#f87171;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --maxw: 1100px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; color:var(--text); background:linear-gradient(180deg, var(--bg), #0a0f1b 50%, var(--bg));}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    header.hero{position:relative; isolation:isolate; min-height:68vh; display:grid; place-items:center; text-align:center;}
-    header.hero::before{content:""; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop') center/cover no-repeat; filter:brightness(.45) saturate(1.1); z-index:-2}
-    header.hero::after{content:""; position:absolute; inset:0; background:radial-gradient(80% 60% at 50% 40%, rgba(34,211,238,.15), transparent 60%), linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.6)); z-index:-1}
-    .hero-inner{width:min(95%, var(--maxw)); padding:90px 0 40px}
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px;}
-    .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.4px}
-    .logo img{width:44px; height:44px; border-radius:50%; box-shadow:var(--shadow)}
-    nav{display:flex; gap:12px; flex-wrap:wrap}
-    .nav-link{padding:10px 14px; border:1px solid rgba(255,255,255,.15); border-radius:999px; color:#e6fbff; backdrop-filter: blur(6px); background:rgba(255,255,255,.06); transition:.25s ease; font-size:.95rem}
-    .nav-link:hover,.nav-link[aria-current="page"]{background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b1220; border-color:transparent}
-    .hero-copy{margin-top:80px}
-    .eyebrow{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#d1fae5; font-size:.82rem}
-    .hero h1{font-size: clamp(1.9rem, 3vw + .8rem, 3.2rem); margin:18px 0 10px; color:#ffffff !important}
-    .hero p{max-width:780px; margin-inline:auto; color:#dbeafe}
-    .btn{padding:12px 18px; border-radius:999px; border:0; background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#0b1220; font-weight:700; cursor:pointer; box-shadow: var(--shadow);}
-    section{padding:70px 0}
-    .wrap{width:min(94%, var(--maxw)); margin-inline:auto}
-    .title{font-size:clamp(1.4rem, 2vw + .6rem, 2.2rem); margin:0 0 10px}
-    .lead{color:var(--muted); margin:0 0 26px}
-    .about{display:grid; grid-template-columns: 1fr; gap:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); padding:22px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow)}
-    .member{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-sm); padding:14px; text-align:center}
-    .avatar{border-radius:12px; aspect-ratio:1/1; object-fit:cover; margin-bottom:10px}
-    
-    /* === Estilos para la sección de video === */
-    .video-section {
-      background: var(--bg-soft); /* Ajustado para que tome el color de fondo soft */
-      text-align: center;
-    }
-    .video-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-top: 20px;
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    
-    /* === Overrides: fondo blanco === */
-    body{background:#ffffff; color:#111827}
-    .card,.member,.contact-card,.video-section{background:#ffffff; border:1px solid rgba(0,0,0,.08)} /* Añadido .video-section aquí */
-    .lead{color:#374151}
-    footer{border-top:1px solid rgba(0,0,0,.08); color:#374151}
-    
-    /* Ajustes para los formularios */
-    form {
-      display: grid;
-      gap: 16px;
-      max-width: 600px;
-    }
-    label {
-      display: block;
-      font-weight: 500;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid rgba(0,0,0,.2);
-      border-radius: 8px;
-      margin-top: 5px;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-    
-    /* Ajustes para el mapa */
-    .map {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: var(--radius-sm);
-      margin-top: 20px;
-    }
-    
-    /* === Estilos para el resultado del cuento === */
-    .cuento-resultado {
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #f8f9fa;
-      border: 1px solid rgba(0,0,0,.1);
-      border-radius: var(--radius-sm);
-    }
-    .cuento-resultado h3 {
-      margin-top: 0;
-      color: #000;
-    }
-    .cuento-texto {
-      white-space: pre-wrap; /* Mantiene los saltos de línea del texto */
-      line-height: 1.6;
-      color: #343a40;
-    }
-    
-    /* === Estilos para la sección de crear cuento con video === */
-    .cuento-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: start;
-    }
-    
-    .cuento-video {
-      position: relative;
-      padding-bottom: 75%; /* Relación de aspecto 4:3 para que sea más cuadrado */
-      height: 0;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    
-    .cuento-video iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    
-    /* === Estilos para el botón de repositorio === */
-    .repo-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 30px;
-      padding: 30px;
-      background-color: #f8f9fa;
-      border-radius: var(--radius);
-      border: 1px solid rgba(0,0,0,.08);
-    }
-    
-    .repo-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      background: linear-gradient(90deg, #333, #555);
-      color: white;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .repo-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.25);
-      background: linear-gradient(90deg, #444, #666);
-    }
-    
-    .repo-icon {
-      width: 24px;
-      height: 24px;
-    }
-    
-    /* Responsive: en pantallas pequeñas, el video va debajo del formulario */
-    @media (max-width: 768px) {
-      .cuento-container {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="hero" id="inicio">
@@ -287,20 +89,196 @@
   <section id="cotizacion">
     <div class="wrap">
       <h2 class="title">Solicitud de Cotización</h2>
-      <form>
-        <label>Nombre completo <input type="text" required /></label>
-        <label>Correo electrónico <input type="email" required /></label>
-        <label>Teléfono / WhatsApp <input type="tel" required /></label>
-        <label>Tipo de servicio <select required>
-          <option>Seleccione…</option>
-          <option>Soporte Básico</option>
-          <option>Instalación de Software</option>
-          <option>Gestión de Redes</option>
-          <option>Centros de Datos</option>
-        </select></label>
-        <label>Detalle de la solicitud <textarea required></textarea></label>
-        <button class="btn" type="submit">Enviar solicitud</button>
-      </form>
+      
+      <div class="cotizacion-container">
+        <!-- Formulario de datos personales (izquierda) -->
+        <div class="formulario-datos">
+          <form id="cotizacion-form">
+            <label>Nombres y Apellidos <input type="text" id="nombre-completo" required /></label>
+            
+            <label>Ciudad
+              <select id="ciudad" required>
+                <option value="">Seleccione una ciudad</option>
+                <option value="Bogotá">Bogotá, D.C.</option>
+                <option value="Medellín">Medellín</option>
+                <option value="Cali">Cali</option>
+                <option value="Barranquilla">Barranquilla</option>
+                <option value="Cartagena">Cartagena</option>
+                <option value="Cúcuta">Cúcuta</option>
+                <option value="Bucaramanga">Bucaramanga</option>
+                <option value="Pereira">Pereira</option>
+                <option value="Santa Marta">Santa Marta</option>
+                <option value="Ibagué">Ibagué</option>
+                <option value="Manizales">Manizales</option>
+                <option value="Villavicencio">Villavicencio</option>
+                <option value="Pasto">Pasto</option>
+                <option value="Neiva">Neiva</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Sincelejo">Sincelejo</option>
+                <option value="Popayán">Popayán</option>
+                <option value="Valledupar">Valledupar</option>
+                <option value="Montería">Montería</option>
+                <option value="Tunja">Tunja</option>
+                <option value="Riohacha">Riohacha</option>
+                <option value="Quibdó">Quibdó</option>
+                <option value="Yopal">Yopal</option>
+                <option value="Mocoa">Mocoa</option>
+                <option value="San José del Guaviare">San José del Guaviare</option>
+                <option value="Mitú">Mitú</option>
+                <option value="Puerto Carreño">Puerto Carreño</option>
+                <option value="Leticia">Leticia</option>
+                <option value="Arauca">Arauca</option>
+                <option value="Inírida">Inírida</option>
+              </select>
+            </label>
+            
+            <label>Dirección <input type="text" id="direccion" required /></label>
+            <label>Celular <input type="tel" id="celular" required /></label>
+          </form>
+        </div>
+        
+        <!-- Productos de interés (derecha) -->
+        <div class="productos-lateral">
+          <h3>Productos de Interés</h3>
+          
+          <div class="producto-item">
+            <div class="producto-header">
+              <input type="checkbox" id="soporte-basico" value="Soporte Básico" data-precio="150000">
+              <div class="producto-info">
+                <h4>Soporte Básico</h4>
+                <p>Formateo, instalación de SO, eliminación de virus y optimización.</p>
+                <div class="precio-info">Precio unitario: $150.000</div>
+              </div>
+            </div>
+            <div class="cantidad-controls">
+              <label for="cantidad-soporte">Cantidad:</label>
+              <div class="cantidad-input-container">
+                <button type="button" class="cantidad-btn decrement" data-target="cantidad-soporte">-</button>
+                <input type="number" id="cantidad-soporte" class="cantidad-input" min="1" value="1" disabled>
+                <button type="button" class="cantidad-btn increment" data-target="cantidad-soporte">+</button>
+              </div>
+            </div>
+            <div class="subtotal-info" id="subtotal-soporte">Subtotal: $0</div>
+          </div>
+          
+          <div class="producto-item">
+            <div class="producto-header">
+              <input type="checkbox" id="instalacion-software" value="Instalación de Software" data-precio="200000">
+              <div class="producto-info">
+                <h4>Instalación de Software</h4>
+                <p>Instalación y configuración de aplicaciones empresariales.</p>
+                <div class="precio-info">Precio unitario: $200.000</div>
+              </div>
+            </div>
+            <div class="cantidad-controls">
+              <label for="cantidad-software">Cantidad:</label>
+              <div class="cantidad-input-container">
+                <button type="button" class="cantidad-btn decrement" data-target="cantidad-software">-</button>
+                <input type="number" id="cantidad-software" class="cantidad-input" min="1" value="1" disabled>
+                <button type="button" class="cantidad-btn increment" data-target="cantidad-software">+</button>
+              </div>
+            </div>
+            <div class="subtotal-info" id="subtotal-software">Subtotal: $0</div>
+          </div>
+          
+          <div class="producto-item">
+            <div class="producto-header">
+              <input type="checkbox" id="gestion-redes" value="Gestión de Redes" data-precio="350000">
+              <div class="producto-info">
+                <h4>Gestión de Redes</h4>
+                <p>Configuración de routers, switches, firewalls y redes empresariales.</p>
+                <div class="precio-info">Precio unitario: $350.000</div>
+              </div>
+            </div>
+            <div class="cantidad-controls">
+              <label for="cantidad-redes">Cantidad:</label>
+              <div class="cantidad-input-container">
+                <button type="button" class="cantidad-btn decrement" data-target="cantidad-redes">-</button>
+                <input type="number" id="cantidad-redes" class="cantidad-input" min="1" value="1" disabled>
+                <button type="button" class="cantidad-btn increment" data-target="cantidad-redes">+</button>
+              </div>
+            </div>
+            <div class="subtotal-info" id="subtotal-redes">Subtotal: $0</div>
+          </div>
+          
+          <div class="producto-item">
+            <div class="producto-header">
+              <input type="checkbox" id="centros-datos" value="Centros de Datos" data-precio="500000">
+              <div class="producto-info">
+                <h4>Centros de Datos</h4>
+                <p>Administración de servidores, virtualización y aprovisionamiento.</p>
+                <div class="precio-info">Precio unitario: $500.000</div>
+              </div>
+            </div>
+            <div class="cantidad-controls">
+              <label for="cantidad-datos">Cantidad:</label>
+              <div class="cantidad-input-container">
+                <button type="button" class="cantidad-btn decrement" data-target="cantidad-datos">-</button>
+                <input type="number" id="cantidad-datos" class="cantidad-input" min="1" value="1" disabled>
+                <button type="button" class="cantidad-btn increment" data-target="cantidad-datos">+</button>
+              </div>
+            </div>
+            <div class="subtotal-info" id="subtotal-datos">Subtotal: $0</div>
+          </div>
+          
+          <div class="form-buttons">
+            <button type="submit" class="btn" form="cotizacion-form">Enviar datos</button>
+            <button type="button" id="cancelar-btn" class="btn btn-secondary">Cancelar</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección para mostrar los resultados de la cotización -->
+      <div id="resultado-cotizacion" style="display: none;">
+        <h2>Resumen de su Cotización</h2>
+        <div class="card">
+          <table class="tabla-cotizaciones">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-productos">
+              <!-- Los productos seleccionados se insertarán aquí -->
+            </tbody>
+            <tfoot>
+              <tr class="total-row">
+                <td colspan="3" style="text-align: right;">Total:</td>
+                <td id="total-cotizacion">$0</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        
+        <div class="card">
+          <h3>Información del Cliente</h3>
+          <p><strong>Nombre:</strong> <span id="res-nombre"></span></p>
+          <p><strong>Ciudad:</strong> <span id="res-ciudad"></span></p>
+          <p><strong>Dirección:</strong> <span id="res-direccion"></span></p>
+          <p><strong>Celular:</strong> <span id="res-celular"></span></p>
+        </div>
+        
+        <div class="form-buttons">
+          <button id="nueva-cotizacion" class="btn">Realizar Nueva Cotización</button>
+          <button id="ver-base-datos" class="btn btn-secondary">Ver Base de Datos</button>
+        </div>
+      </div>
+      
+      <!-- Sección para mostrar la base de datos -->
+      <div id="base-datos-section" class="db-section" style="display: none;">
+        <h3>Base de Datos - Cotizaciones Almacenadas</h3>
+        <div class="db-controls">
+          <button id="actualizar-db" class="db-btn primary">Actualizar Vista</button>
+          <button id="limpiar-db" class="db-btn danger">Limpiar Base de Datos</button>
+          <button id="cerrar-db" class="db-btn">Cerrar Vista</button>
+        </div>
+        <div id="contenido-db">
+          <!-- Aquí se mostrarán los registros de la base de datos -->
+        </div>
+      </div>
     </div>
   </section>
 
@@ -374,49 +352,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-  
-  <script>
-    // Seleccionamos el formulario por su ID
-    const cuentoForm = document.getElementById('cuento-form');
-    
-    // Escuchamos el evento 'submit' del formulario
-    cuentoForm.addEventListener('submit', function(event) {
-      // Prevenimos el comportamiento por defecto del formulario (que es recargar la página)
-      event.preventDefault();
-      
-      // Capturamos los valores de cada campo del formulario
-      const nombre = document.getElementById('nombre').value;
-      const apodo = document.getElementById('apodo').value;
-      const cabello = document.getElementById('cabello').value;
-      const ojos = document.getElementById('ojos').value;
-      const edad = document.getElementById('edad').value;
-      const hobby = document.getElementById('hobby').value;
-      
-      // Construimos la historia usando los datos del usuario
-      const historia = `En el corazón de un bosque encantado, vivía una persona de ${edad} años llamada ${nombre}, aunque todos en el reino le conocían por su apodo: "${apodo}".
-      
-Su cabello, de un asombroso color ${cabello}, parecía capturar la luz del sol, y sus ojos, de un profundo tono ${ojos}, reflejaban la sabiduría de los árboles ancestrales.
-      
-No había nadie en el reino que practicara su hobby, ${hobby}, con tanta pasión y destreza. Un día, el rey convocó a "${apodo}" al castillo, pues solo alguien con su talento único para ${hobby} podría resolver el gran acertijo que protegía el tesoro perdido del reino.
-      
-Y así, ${nombre} emprendió la mayor aventura de su vida, demostrando que un pasatiempo puede cambiar el destino de todos.`;
-      
-      // Seleccionamos los elementos donde mostraremos el resultado
-      const resultadoDiv = document.getElementById('resultado-cuento');
-      const historiaP = document.getElementById('historia-generada');
-      
-      // Asignamos el texto de la historia al párrafo correspondiente
-      historiaP.textContent = historia;
-      
-      // Hacemos visible el contenedor del resultado
-      resultadoDiv.style.display = 'block';
-
-      // Opcional: hacemos scroll para que el usuario vea el resultado
-      resultadoDiv.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
