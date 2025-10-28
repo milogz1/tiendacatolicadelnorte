@@ -38,8 +38,9 @@ function inicializarSistemaCotizaciones() {
     }
     
     // Función para actualizar el subtotal de un producto
-    function actualizarSubtotal(productoId) {
-        const checkbox = document.getElementById(productoId);
+    function actualizarSubtotal(checkbox) {
+        const productoId = checkbox.id;
+        const productoKey = productoId.replace('-', '_'); // Convertir a clave consistente
         const cantidadInput = document.getElementById(`cantidad-${productoId.split('-')[1]}`);
         const subtotalElement = document.getElementById(`subtotal-${productoId.split('-')[1]}`);
         
@@ -53,8 +54,14 @@ function inicializarSistemaCotizaciones() {
         }
     }
     
+    // Inicializar todos los subtotales a 0
+    document.querySelectorAll('.subtotal-info').forEach(element => {
+        element.textContent = 'Subtotal: $0';
+    });
+    
     // Habilitar/deshabilitar campos de cantidad según checkbox y actualizar subtotal
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        // Configurar evento change para cada checkbox
         checkbox.addEventListener('change', function() {
             const productId = this.id;
             const cantidadInput = document.getElementById(`cantidad-${productId.split('-')[1]}`);
@@ -64,9 +71,14 @@ function inicializarSistemaCotizaciones() {
                 cantidadInput.value = 1;
             }
             
-            // Actualizar subtotal
-            actualizarSubtotal(this.id);
+            // Actualizar subtotal inmediatamente
+            actualizarSubtotal(this);
         });
+        
+        // Actualizar subtotal inicial para checkboxes ya marcados (por si acaso)
+        if (checkbox.checked) {
+            actualizarSubtotal(checkbox);
+        }
     });
     
     // Manejar botones de incremento y decremento
@@ -82,9 +94,12 @@ function inicializarSistemaCotizaciones() {
                 input.value = currentValue - 1;
             }
             
-            // Actualizar subtotal
-            const productId = targetId.replace('cantidad-', '');
-            actualizarSubtotal(productId);
+            // Encontrar el checkbox relacionado y actualizar subtotal
+            const productType = targetId.replace('cantidad-', '');
+            const checkbox = document.querySelector(`input[type="checkbox"][id$="${productType}"]`);
+            if (checkbox && checkbox.checked) {
+                actualizarSubtotal(checkbox);
+            }
         });
     });
     
@@ -96,8 +111,12 @@ function inicializarSistemaCotizaciones() {
                 this.value = 1;
             }
             
-            const productId = this.id.replace('cantidad-', '');
-            actualizarSubtotal(productId);
+            // Encontrar el checkbox relacionado y actualizar subtotal
+            const productType = this.id.replace('cantidad-', '');
+            const checkbox = document.querySelector(`input[type="checkbox"][id$="${productType}"]`);
+            if (checkbox && checkbox.checked) {
+                actualizarSubtotal(checkbox);
+            }
         });
     });
     
@@ -283,8 +302,8 @@ function inicializarSistemaCotizaciones() {
         document.querySelector('.cotizacion-container').style.display = 'grid';
         cotizacionForm.reset();
         
-        // Deshabilitar todos los campos de cantidad
-        document.querySelectorAll('input[type="number"]').forEach(input => {
+        // Deshabilitar todos los campos de cantidad y resetear valores
+        document.querySelectorAll('.cantidad-input').forEach(input => {
             input.disabled = true;
             input.value = 1;
         });
@@ -324,13 +343,8 @@ function inicializarSistemaCotizaciones() {
     });
     
     // Inicializar: deshabilitar todos los campos de cantidad al cargar la página
-    document.querySelectorAll('input[type="number"]').forEach(input => {
+    document.querySelectorAll('.cantidad-input').forEach(input => {
         input.disabled = true;
-    });
-    
-    // Inicializar todos los subtotales a 0
-    document.querySelectorAll('.subtotal-info').forEach(element => {
-        element.textContent = 'Subtotal: $0';
     });
 }
 
