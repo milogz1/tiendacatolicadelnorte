@@ -411,3 +411,44 @@ Y así, ${nombre} emprendió la mayor aventura de su vida, demostrando que un pa
         resultadoDiv.scrollIntoView({ behavior: 'smooth' });
     });
 }
+
+// Agrega esta función al final de tu script.js para hacer consultas avanzadas
+function consultarBaseDatos() {
+    const cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || [];
+    
+    if (cotizaciones.length === 0) {
+        console.log('No hay cotizaciones en la base de datos.');
+        return;
+    }
+    
+    console.log('=== BASE DE DATOS DE COTIZACIONES ===');
+    console.log(`Total de registros: ${cotizaciones.length}`);
+    
+    // Estadísticas por ciudad
+    const porCiudad = {};
+    cotizaciones.forEach(cot => {
+        porCiudad[cot.ciudad] = (porCiudad[cot.ciudad] || 0) + 1;
+    });
+    console.log('Cotizaciones por ciudad:', porCiudad);
+    
+    // Estadísticas por producto
+    const productosVendidos = {};
+    let totalVentas = 0;
+    
+    cotizaciones.forEach(cot => {
+        cot.productos.forEach(prod => {
+            productosVendidos[prod.producto] = productosVendidos[prod.producto] || { cantidad: 0, total: 0 };
+            productosVendidos[prod.producto].cantidad += prod.cantidad;
+            productosVendidos[prod.producto].total += prod.subtotal;
+        });
+        totalVentas += cot.total;
+    });
+    
+    console.log('Ventas por producto:', productosVendidos);
+    console.log('Total en ventas: $' + new Intl.NumberFormat('es-CO').format(totalVentas));
+    
+    // Mostrar todas las cotizaciones
+    console.log('Detalle completo:', cotizaciones);
+}
+
+// Para usar esta función, ejecuta en la consola: consultarBaseDatos()
