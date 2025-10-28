@@ -141,25 +141,26 @@
         <div class="productos-lateral">
           <h3>Productos de Interés</h3>
           
-          <div class="producto-item">
-            <div class="producto-header">
-              <input type="checkbox" id="soporte-basico" value="Soporte Básico" data-precio="150000">
-              <div class="producto-info">
-                <h4>Soporte Básico</h4>
-                <p>Formateo, instalación de SO, eliminación de virus y optimización.</p>
-                <div class="precio-info">Precio unitario: $150.000</div>
-              </div>
-            </div>
-            <div class="cantidad-controls">
-              <label for="cantidad-soporte">Cantidad:</label>
-              <div class="cantidad-input-container">
-                <button type="button" class="cantidad-btn decrement" data-target="cantidad-soporte">-</button>
-                <input type="number" id="cantidad-soporte" class="cantidad-input" min="1" value="1" disabled>
-                <button type="button" class="cantidad-btn increment" data-target="cantidad-soporte">+</button>
-              </div>
-            </div>
-            <div class="subtotal-info" id="subtotal-soporte">Subtotal: $0</div>
-          </div>
+<div class="producto-item">
+    <div class="producto-header">
+        <input type="checkbox" id="soporte-basico" value="Soporte Básico" data-precio="150000">
+        <div class="producto-info">
+            <h4>Soporte Básico</h4>
+            <p>Formateo, instalación de SO, eliminación de virus y optimización.</p>
+            <div class="precio-info">Precio unitario: $150.000</div>
+        </div>
+    </div>
+    <div class="cantidad-controls">
+        <label for="cantidad-basico">Cantidad:</label>  <!-- CAMBIADO -->
+        <div class="cantidad-input-container">
+            <button type="button" class="cantidad-btn decrement" data-target="cantidad-basico">-</button>  <!-- CAMBIADO -->
+            <input type="number" id="cantidad-basico" class="cantidad-input" min="1" value="1" disabled>  <!-- CAMBIADO -->
+            <button type="button" class="cantidad-btn increment" data-target="cantidad-basico">+</button>  <!-- CAMBIADO -->
+        </div>
+    </div>
+    <div class="subtotal-info" id="subtotal-basico">Subtotal: $0</div>  <!-- CAMBIADO -->
+</div>
+          
           
           <div class="producto-item">
             <div class="producto-header">
