@@ -90,44 +90,58 @@ function actualizarSubtotal(checkbox) {
         }
     });
     
-    // Manejar botones de incremento y decremento
-    document.querySelectorAll('.cantidad-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const input = document.getElementById(targetId);
-            const currentValue = parseInt(input.value) || 1;
-            
-            if (this.classList.contains('increment')) {
-                input.value = currentValue + 1;
-            } else if (this.classList.contains('decrement') && currentValue > 1) {
-                input.value = currentValue - 1;
-            }
-            
-            // Encontrar el checkbox relacionado y actualizar subtotal
-            const productType = targetId.replace('cantidad-', '');
-            const checkbox = document.querySelector(`input[type="checkbox"][id$="${productType}"]`);
-            if (checkbox && checkbox.checked) {
-                actualizarSubtotal(checkbox);
-            }
-        });
+   // Manejar botones de incremento y decremento
+document.querySelectorAll('.cantidad-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        const currentValue = parseInt(input.value) || 1;
+        
+        if (this.classList.contains('increment')) {
+            input.value = currentValue + 1;
+        } else if (this.classList.contains('decrement') && currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+        
+        // Encontrar el checkbox relacionado usando el mapeo inverso
+        const mapeoInverso = {
+            'cantidad-basico': 'soporte-basico',
+            'cantidad-software': 'instalacion-software',
+            'cantidad-redes': 'gestion-redes', 
+            'cantidad-datos': 'centros-datos'
+        };
+        
+        const checkboxId = mapeoInverso[targetId];
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox && checkbox.checked) {
+            actualizarSubtotal(checkbox);
+        }
     });
-    
-    // Manejar cambios directos en los inputs de cantidad
-    document.querySelectorAll('.cantidad-input').forEach(input => {
-        input.addEventListener('input', function() {
-            // Asegurarse de que el valor no sea menor a 1
-            if (this.value < 1) {
-                this.value = 1;
-            }
-            
-            // Encontrar el checkbox relacionado y actualizar subtotal
-            const productType = this.id.replace('cantidad-', '');
-            const checkbox = document.querySelector(`input[type="checkbox"][id$="${productType}"]`);
-            if (checkbox && checkbox.checked) {
-                actualizarSubtotal(checkbox);
-            }
-        });
+});
+
+// Manejar cambios directos en los inputs de cantidad
+document.querySelectorAll('.cantidad-input').forEach(input => {
+    input.addEventListener('input', function() {
+        // Asegurarse de que el valor no sea menor a 1
+        if (this.value < 1) {
+            this.value = 1;
+        }
+        
+        // Encontrar el checkbox relacionado usando el mapeo inverso
+        const mapeoInverso = {
+            'cantidad-basico': 'soporte-basico',
+            'cantidad-software': 'instalacion-software',
+            'cantidad-redes': 'gestion-redes',
+            'cantidad-datos': 'centros-datos'
+        };
+        
+        const checkboxId = mapeoInverso[this.id];
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox && checkbox.checked) {
+            actualizarSubtotal(checkbox);
+        }
     });
+});
     
     // Manejar envío del formulario de cotización
     cotizacionForm.addEventListener('submit', function(event) {
