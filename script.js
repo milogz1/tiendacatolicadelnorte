@@ -38,21 +38,30 @@ function inicializarSistemaCotizaciones() {
     }
     
     // Función para actualizar el subtotal de un producto
-    function actualizarSubtotal(checkbox) {
-        const productoId = checkbox.id;
-        const productoKey = productoId.replace('-', '_'); // Convertir a clave consistente
-        const cantidadInput = document.getElementById(`cantidad-${productoId.split('-')[1]}`);
-        const subtotalElement = document.getElementById(`subtotal-${productoId.split('-')[1]}`);
-        
-        if (checkbox.checked) {
-            const precio = precios[checkbox.value];
-            const cantidad = parseInt(cantidadInput.value) || 1;
-            const subtotal = precio * cantidad;
-            subtotalElement.textContent = `Subtotal: $${formatoMoneda(subtotal)}`;
-        } else {
-            subtotalElement.textContent = `Subtotal: $0`;
-        }
+function actualizarSubtotal(checkbox) {
+    const productoId = checkbox.id;
+    
+    // Mapeo específico para "Soporte Básico" que tiene ID diferente
+    const mapeoIds = {
+        'soporte-basico': 'basico',
+        'instalacion-software': 'software', 
+        'gestion-redes': 'redes',
+        'centros-datos': 'datos'
+    };
+    
+    const sufijo = mapeoIds[productoId];
+    const cantidadInput = document.getElementById(`cantidad-${sufijo}`);
+    const subtotalElement = document.getElementById(`subtotal-${sufijo}`);
+    
+    if (checkbox.checked) {
+        const precio = precios[checkbox.value];
+        const cantidad = parseInt(cantidadInput.value) || 1;
+        const subtotal = precio * cantidad;
+        subtotalElement.textContent = `Subtotal: $${formatoMoneda(subtotal)}`;
+    } else {
+        subtotalElement.textContent = `Subtotal: $0`;
     }
+}
     
     // Inicializar todos los subtotales a 0
     document.querySelectorAll('.subtotal-info').forEach(element => {
